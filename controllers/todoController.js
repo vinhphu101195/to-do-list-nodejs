@@ -17,12 +17,16 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 module.exports = function(app) {
   app.get("/todo", function(req, res) {
+    console.log("HELLO GET");
+
     res.render("todo", { todos: data });
   });
 
   app.post("/todo", urlencodedParser, function(req, res) {
     data.push(req.body);
     console.log("post data");
+    console.log(req.body);
+
     //send to front end
     res.json(data);
   });
